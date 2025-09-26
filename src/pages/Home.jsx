@@ -53,7 +53,8 @@ export default function Home() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const res = await fetch('http://localhost:5000/todos');
+      // const res = await fetch('http://localhost:5000/todos');
+      const res = await fetch('https://appwhattodo-api.onrender.com/todos');
       const data = await res.json();
 
       // setTodos(data);
@@ -73,7 +74,7 @@ export default function Home() {
     const updatedTodo= { ...todo, completed : !todo.completed};
 
       // ③ サーバーにPUTリクエストを送信してデータを更新
-    await fetch(`http://localhost:5000/todos/${id}` , {
+    await fetch(`https://appwhattodo-api.onrender.com/todos/${id}` , {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -90,7 +91,7 @@ export default function Home() {
 
   // タスクを削除
   const deleteTodo = async (id) => {
-    await fetch(`http://localhost:5000/todos/${id}`,{
+    await fetch(`https://appwhattodo-api.onrender.com/todos/${id}`,{
       method:'DELETE',
     });
     setTodos(todos.filter((todo) => todo.id !==id));
@@ -99,7 +100,7 @@ export default function Home() {
   const handleClear = async() => {
     const completedTodos = todos.filter((todo) => todo.completed);
     for (const todo of completedTodos) {
-      await fetch(`http://localhost:5000/todos/${todo.id}`,{method:'DELETE',});
+      await fetch(`https://appwhattodo-api.onrender.com/todos/${todo.id}`,{method:'DELETE',});
     }
 
     const remainingTodos = todos.filter((todo) => !todo.completed);
@@ -111,7 +112,7 @@ export default function Home() {
     for (const todo of todos) {
     // 2. 取り出したタスクのidを使って、サーバーに削除リクエストを送る
     //    DELETEメソッドを使うことで、サーバーのデータを永続的に削除できる
-      await fetch(`http://localhost:5000/todos/${todo.id}`,{method:'DELETE',});
+      await fetch(`https://appwhattodo-api.onrender.com/todos/${todo.id}`,{method:'DELETE',});
     }
 
     // 3. すべてのタスクがサーバーから削除されたら、ローカルの状態を空の配列にする
@@ -121,7 +122,7 @@ export default function Home() {
 
   // タスクを追加
   const addTodo = async (todo) => {
-    const res = await fetch(`http://localhost:5000/todos`, {
+    const res = await fetch(`https://appwhattodo-api.onrender.com/todos`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json' ,
@@ -143,7 +144,7 @@ export default function Home() {
   const updateTodo = async (id, newText, newDate, newMemo, newPriority) => {
     const todoToUpdate = todos.find((t) => t.id === id);
     const updatedTodo = { ...todoToUpdate, text: newText, dueDate:newDate , memo: newMemo, priority: newPriority, };
-    await fetch(`http://localhost:5000/todos/${id}`, {
+    await fetch(`https://appwhattodo-api.onrender.com/todos/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
