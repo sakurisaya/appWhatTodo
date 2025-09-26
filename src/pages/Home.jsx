@@ -52,6 +52,20 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const showWelcomeMessage = () => {
+      const message = "【ポートフォリオ作品】\n\nこのタスク管理アプリは、React Hooks、Tailwind CSS、Render (API) を使用して構築されました。\nデータは共有APIサーバーに保存されます。";
+
+       // confirmで「OK」か「キャンセル」を選択
+      const userConfirmed = window.confirm(message );
+      if (userConfirmed) {
+        // 「OK」が選択された場合のみ、データ取得に進む
+        fetchTodos();
+      }else {
+         // 「キャンセル」が選択された場合は、アプリを空の状態で保持
+        setTodos([]);
+      }
+    };
+
     const fetchTodos = async () => {
       // const res = await fetch('http://localhost:5000/todos');
       const res = await fetch('https://appwhattodo-api.onrender.com/todos');
@@ -61,7 +75,7 @@ export default function Home() {
       const sortData = sortTodosByDate(data);
       setTodos(sortData);
     };
-    fetchTodos();
+    showWelcomeMessage();
   }, []);
 
 
