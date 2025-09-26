@@ -63,7 +63,7 @@ export default function EditModal({ todo, onSave, onCancel }) {
             </select>
           </div>
           {/* メモ */}
-          <div className="text-start flex ">
+          <div className="text-start flex mb-3">
             <label className="text-sm text-gray-600 mb-1 inline-block min-w-[4.5em] text-center">
               memo
             </label>

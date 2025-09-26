@@ -51,7 +51,7 @@ const handleCancel = () =>{
         checked={todo.completed}
         readOnly
         onChange={handleToClick}
-        className="accent-lime-600 bg-transparent hover:accent-slate-500 w-3.5 h-3.5"
+        className="accent-lime-600 bg-transparent hover:accent-slate-500 w-3.5 h-3.5 mt-0.5"
       />
 
       <p onClick={handleShowClick} className={`flex items-center flex-1 text-start cursor-pointer duration-300 transition-colors ${todo.memo ? 'hover:text-lime-600' : '' }`

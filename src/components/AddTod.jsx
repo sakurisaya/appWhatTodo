@@ -50,7 +50,7 @@ export default function AddTod({ onAdd }) {
         value={memo}
         onChange={(e) => setMemo(e.target.value)}
         className="border border-gray-300 px-2 block w-full mb-3 bg-white"></textarea>
-      <Button type="submit" className="mb-3">タスクを追加</Button>
+      <Button type="submit" className="mb-3 mt-5">タスクを追加</Button>
     </form>
   )
 }

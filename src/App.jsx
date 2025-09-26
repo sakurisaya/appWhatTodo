@@ -4,8 +4,8 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <BrowserRouter basename="/appWhatTodo">
+      <Routes>nam
         <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
